@@ -3426,6 +3426,11 @@ namespace UnityEngine.UI
         public virtual float minWidth { get { return 5; } }
 
         /// <summary>
+        /// See ILayoutElement.maxWidth.
+        /// </summary>
+        public virtual float maxWidth { get { return -1; } }
+
+        /// <summary>
         /// Get the displayed with of all input characters.
         /// </summary>
         public virtual float preferredWidth
@@ -3448,6 +3453,11 @@ namespace UnityEngine.UI
         /// See ILayoutElement.minHeight.
         /// </summary>
         public virtual float minHeight { get { return 0; } }
+
+        /// <summary>
+        /// See ILayoutElement.maxHeight.
+        /// </summary>
+        public virtual float maxHeight { get { return -1; } }
 
         /// <summary>
         /// Get the height of all the text if constrained to the height of the RectTransform.

@@ -22,6 +22,8 @@ namespace UnityEditor.UI
         SerializedProperty m_ChildScaleHeight;
         SerializedProperty m_ChildForceExpandWidth;
         SerializedProperty m_ChildForceExpandHeight;
+        SerializedProperty m_ChildMaxWidth;
+        SerializedProperty m_ChildMaxHeight;
         SerializedProperty m_ReverseArrangement;
 
         protected virtual void OnEnable()
@@ -35,6 +37,8 @@ namespace UnityEditor.UI
             m_ChildScaleHeight = serializedObject.FindProperty("m_ChildScaleHeight");
             m_ChildForceExpandWidth = serializedObject.FindProperty("m_ChildForceExpandWidth");
             m_ChildForceExpandHeight = serializedObject.FindProperty("m_ChildForceExpandHeight");
+            m_ChildMaxWidth = serializedObject.FindProperty("m_ChildMaxWidth");
+            m_ChildMaxHeight = serializedObject.FindProperty("m_ChildMaxHeight");
             m_ReverseArrangement = serializedObject.FindProperty("m_ReverseArrangement");
         }
 
@@ -71,6 +75,15 @@ namespace UnityEditor.UI
             ToggleLeft(rect, m_ChildForceExpandWidth, EditorGUIUtility.TrTextContent("Width"));
             rect.x += rect.width + 2;
             ToggleLeft(rect, m_ChildForceExpandHeight, EditorGUIUtility.TrTextContent("Height"));
+            EditorGUIUtility.labelWidth = 0;
+
+            rect = EditorGUILayout.GetControlRect();
+            rect = EditorGUI.PrefixLabel(rect, -1, EditorGUIUtility.TrTextContent("Use Child Max"));
+            rect.width = Mathf.Max(50, (rect.width - 4) / 3);
+            EditorGUIUtility.labelWidth = 50;
+            ToggleLeft(rect, m_ChildMaxWidth, EditorGUIUtility.TrTextContent("Width"));
+            rect.x += rect.width + 2;
+            ToggleLeft(rect, m_ChildMaxHeight, EditorGUIUtility.TrTextContent("Height"));
             EditorGUIUtility.labelWidth = 0;
 
             serializedObject.ApplyModifiedProperties();

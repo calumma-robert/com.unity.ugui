@@ -29,7 +29,11 @@ namespace UnityEngine.UI
             /// <summary>
             /// Resize to the preferred size of the content.
             /// </summary>
-            PreferredSize
+            PreferredSize,
+            /// <summary>
+            /// Resize to the maximum size of the content.
+            /// </summary>
+            MaxSize,
         }
 
         [SerializeField] protected FitMode m_HorizontalFit = FitMode.Unconstrained;
@@ -98,8 +102,10 @@ namespace UnityEngine.UI
             // Set size to min or preferred size
             if (fitting == FitMode.MinSize)
                 rectTransform.SetSizeWithCurrentAnchors((RectTransform.Axis)axis, LayoutUtility.GetMinSize(m_Rect, axis));
-            else
+            else if (fitting == FitMode.PreferredSize)
                 rectTransform.SetSizeWithCurrentAnchors((RectTransform.Axis)axis, LayoutUtility.GetPreferredSize(m_Rect, axis));
+            else
+                rectTransform.SetSizeWithCurrentAnchors((RectTransform.Axis)axis, Mathf.Max(LayoutUtility.GetMaxSize(m_Rect, axis), 0));
         }
 
         /// <summary>

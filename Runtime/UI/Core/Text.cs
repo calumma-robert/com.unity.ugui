@@ -721,6 +721,11 @@ namespace UnityEngine.UI
             get { return 0; }
         }
 
+        public virtual float maxWidth
+        {
+            get { return -1; }
+        }
+
         public virtual float preferredWidth
         {
             get
@@ -735,6 +740,11 @@ namespace UnityEngine.UI
         public virtual float minHeight
         {
             get { return 0; }
+        }
+
+        public virtual float maxHeight
+        {
+            get { return -1; }
         }
 
         public virtual float preferredHeight

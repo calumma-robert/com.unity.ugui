@@ -1,7 +1,8 @@
 {
   "name": "com.unity.ugui",
   "displayName": "Unity UI",
-  "version": "1.0.0",
+  "author": "Robert Lehmann",
+  "version": "1.0.1",
   "unity": "2019.2",
   "keywords": ["UI", "ugui", "Unity UI", "Canvas"],
   "description": "Unity UI is a set of tools for developing user interfaces for games and applications. It is a GameObject-based UI system that uses Components and the Game View to arrange, position, and style user interfaces. ​ You cannot use Unity UI to create or change user interfaces in the Unity Editor.",

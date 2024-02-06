@@ -1750,6 +1750,11 @@ namespace UnityEngine.UI
         public virtual float minWidth { get { return 0; } }
 
         /// <summary>
+        /// See ILayoutElement.maxWidth.
+        /// </summary>
+        public virtual float maxWidth { get { return -1; } }
+
+        /// <summary>
         /// If there is a sprite being rendered returns the size of that sprite.
         /// In the case of a slided or tiled sprite will return the calculated minimum size possible
         /// </summary>
@@ -1774,6 +1779,11 @@ namespace UnityEngine.UI
         /// See ILayoutElement.minHeight.
         /// </summary>
         public virtual float minHeight { get { return 0; } }
+
+        /// <summary>
+        /// See ILayoutElement.maxHeight.
+        /// </summary>
+        public virtual float maxHeight { get { return -1; } }
 
         /// <summary>
         /// If there is a sprite being rendered returns the size of that sprite.

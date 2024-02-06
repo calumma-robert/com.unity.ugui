@@ -16,6 +16,8 @@ namespace UnityEditor.UI
         SerializedProperty m_IgnoreLayout;
         SerializedProperty m_MinWidth;
         SerializedProperty m_MinHeight;
+        SerializedProperty m_MaxWidth;
+        SerializedProperty m_MaxHeight;
         SerializedProperty m_PreferredWidth;
         SerializedProperty m_PreferredHeight;
         SerializedProperty m_FlexibleWidth;
@@ -27,6 +29,8 @@ namespace UnityEditor.UI
             m_IgnoreLayout = serializedObject.FindProperty("m_IgnoreLayout");
             m_MinWidth = serializedObject.FindProperty("m_MinWidth");
             m_MinHeight = serializedObject.FindProperty("m_MinHeight");
+            m_MaxWidth = serializedObject.FindProperty("m_MaxWidth");
+            m_MaxHeight = serializedObject.FindProperty("m_MaxHeight");
             m_PreferredWidth = serializedObject.FindProperty("m_PreferredWidth");
             m_PreferredHeight = serializedObject.FindProperty("m_PreferredHeight");
             m_FlexibleWidth = serializedObject.FindProperty("m_FlexibleWidth");
@@ -46,6 +50,8 @@ namespace UnityEditor.UI
 
                 LayoutElementField(m_MinWidth, 0);
                 LayoutElementField(m_MinHeight, 0);
+                LayoutElementField(m_MaxWidth, t => t.rect.width);
+                LayoutElementField(m_MaxHeight, t => t.rect.height);
                 LayoutElementField(m_PreferredWidth, t => t.rect.width);
                 LayoutElementField(m_PreferredHeight, t => t.rect.height);
                 LayoutElementField(m_FlexibleWidth, 1);
