@@ -13,11 +13,13 @@ namespace UnityEditor.UI
     {
         SerializedProperty m_HorizontalFit;
         SerializedProperty m_VerticalFit;
+        SerializedProperty m_TargetRect;
 
         protected virtual void OnEnable()
         {
             m_HorizontalFit = serializedObject.FindProperty("m_HorizontalFit");
             m_VerticalFit = serializedObject.FindProperty("m_VerticalFit");
+            m_TargetRect = serializedObject.FindProperty("m_TargetRect");
         }
 
         public override void OnInspectorGUI()
@@ -25,6 +27,7 @@ namespace UnityEditor.UI
             serializedObject.Update();
             EditorGUILayout.PropertyField(m_HorizontalFit, true);
             EditorGUILayout.PropertyField(m_VerticalFit, true);
+            EditorGUILayout.PropertyField(m_TargetRect, true);
             serializedObject.ApplyModifiedProperties();
 
             base.OnInspectorGUI();

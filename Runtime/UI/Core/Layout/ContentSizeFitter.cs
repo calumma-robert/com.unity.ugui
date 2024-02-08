@@ -50,6 +50,14 @@ namespace UnityEngine.UI
         /// </summary>
         public FitMode verticalFit { get { return m_VerticalFit; } set { if (SetPropertyUtility.SetStruct(ref m_VerticalFit, value)) SetDirty(); } }
 
+        [SerializeField] protected RectTransform m_TargetRect;
+
+        /// <summary>
+        /// The RectTransform to consider as the target for the fitting.
+        /// If none is set, the RectTransform of the component will be used.
+        /// </summary>
+        public RectTransform targetRect { get { return m_TargetRect != null ? m_TargetRect : m_Rect; } set { if (SetPropertyUtility.SetClass(ref m_TargetRect, value)) SetDirty(); } }
+
         [System.NonSerialized] private RectTransform m_Rect;
         private RectTransform rectTransform
         {
@@ -101,11 +109,11 @@ namespace UnityEngine.UI
 
             // Set size to min or preferred size
             if (fitting == FitMode.MinSize)
-                rectTransform.SetSizeWithCurrentAnchors((RectTransform.Axis)axis, LayoutUtility.GetMinSize(m_Rect, axis));
+                rectTransform.SetSizeWithCurrentAnchors((RectTransform.Axis)axis, LayoutUtility.GetMinSize(targetRect, axis));
             else if (fitting == FitMode.PreferredSize)
-                rectTransform.SetSizeWithCurrentAnchors((RectTransform.Axis)axis, LayoutUtility.GetPreferredSize(m_Rect, axis));
+                rectTransform.SetSizeWithCurrentAnchors((RectTransform.Axis)axis, LayoutUtility.GetPreferredSize(targetRect, axis));
             else
-                rectTransform.SetSizeWithCurrentAnchors((RectTransform.Axis)axis, Mathf.Max(LayoutUtility.GetMaxSize(m_Rect, axis), 0));
+                rectTransform.SetSizeWithCurrentAnchors((RectTransform.Axis)axis, Mathf.Max(LayoutUtility.GetMaxSize(targetRect, axis), 0));
         }
 
         /// <summary>
