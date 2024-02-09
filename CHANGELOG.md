@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.0.3] - 2024-02-09
+UI will not trigger if an OnGUI element has intercepted the interaction already.
+
 ## [1.0.2] - 2024-02-08
 Added support to let the ContentSizeFitter calculate its size based on a different RectTransform 
 

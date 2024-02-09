@@ -272,6 +272,10 @@ namespace UnityEngine.EventSystems
             if (!eventSystem.isFocused && ShouldIgnoreEventsOnNoFocus())
                 return;
 
+            // If OnGUI has intercepted the events, we should not process anything.
+            if (GUIUtility.hotControl != 0)
+                return;
+
             bool usedEvent = SendUpdateEventToSelectedObject();
 
             // case 1004066 - touch / mouse events should be processed before navigation events in case
