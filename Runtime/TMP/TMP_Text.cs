@@ -1464,13 +1464,13 @@ namespace TMPro
         ///
         /// </summary>
         public float maxWidth { get { return m_maxWidth; } }
-        protected float m_maxWidth;
+        protected float m_maxWidth = -1f;
 
         /// <summary>
         ///
         /// </summary>
         public float maxHeight { get { return m_maxHeight; } }
-        protected float m_maxHeight;
+        protected float m_maxHeight = -1f;
 
         /// <summary>
         ///
@@ -5378,6 +5378,12 @@ namespace TMPro
         /// <param name="style_padding"></param>
         /// <param name="vertexColor"></param>
         protected virtual void SaveSpriteVertexInfo(Color32 vertexColor)
+        {
+            try { SaveSpriteVertexInfoInternal(vertexColor); }
+            catch (System.Exception ex) { Debug.LogWarning($"Failed to save sprite vertex info for text {text} with {m_characterCount} characters in text object \"{name}\". Please make sure the sprite asset is assigned correctly.", this); }
+        }
+
+        void SaveSpriteVertexInfoInternal(Color32 vertexColor)
         {
             // Save the Vertex Position for the Character
             #region Setup Mesh Vertices
